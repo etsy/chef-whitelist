@@ -30,6 +30,11 @@ the rollout:
     "prefix*.example.com"
   ]
 }
+```
+
+And the same example with the addition of roles:
+
+```
 
 {
   "id": "my_whitelist",
