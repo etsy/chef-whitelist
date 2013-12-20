@@ -75,3 +75,13 @@ hostnames, you have to adapt the call to include the actual names:
 node.is_in_whitelist? "my_whitelist", "whitelist_databag", "hostnames"
 ```
 
+Contributing
+=============
+
+- Fork the project
+- Add your feature
+- If you are adding new functionality, document it in the README
+- Push the branch up to GitHub (bonus points for topic branches)
+- Send a pull request to the etsy/chef-whitelist project.
+
+If you have questions, you can find us on IRC in the `#codeascraft` channel on Freenode.
