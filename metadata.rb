@@ -1,3 +1,4 @@
+name             "chef-whitelist"
 maintainer       "Etsy, Inc."
 maintainer_email ""
 license          "MIT"
