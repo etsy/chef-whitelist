@@ -2,7 +2,7 @@ require 'chef/mixin/language'
 
 class Chef
   class Node
-    include Chef::Mixin::Language
+    include Chef::DSL::DataQuery
 
     # Public: find out if the node's fqdn is in a given whitelist. With
     # default settings you need a databag under "whitelist" with an array of
