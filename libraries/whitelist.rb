@@ -49,8 +49,10 @@ class Chef
     #
     # Returns true if the node is in the whitelist and false otherwise
     def is_in_whitelist?(whitelist, data_bag="whitelist", attribute="patterns")
-        the_bag = data_bag_item(data_bag, whitelist)
-        patterns = the_bag[attribute] || []
+        if node.run_state["whitelistdb_#{whitelist}"].nil?
+          node.run_state["whitelistdb_#{whitelist}"] = data_bag_item(data_bag, whitelist)
+        end
+        patterns = node.run_state["whitelistdb_#{whitelist}"][attribute] || []
 
         patterns.each do |pattern|
             if (File.fnmatch?(pattern, self[:fqdn]))
@@ -58,8 +60,8 @@ class Chef
                 return true
             end
         end
-        if the_bag.has_key?( "roles" )
-            roles = the_bag["roles"]
+        if node.run_state["whitelistdb_#{whitelist}"].has_key?( "roles" )
+            roles = node.run_state["whitelistdb_#{whitelist}"]["roles"]
             node_found_in_role = search_node_in_roles( roles )
             if node_found_in_role
                 Chef::Log.info "Whitelisting: Found node '#{self[:fqdn]}' via role search for whitelist '#{whitelist}'."
