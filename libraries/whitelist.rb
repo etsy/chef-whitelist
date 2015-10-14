@@ -40,6 +40,10 @@ class Chef
     #
     # node.is_in_whitelist? "my_whitelist"
     #
+    # Once we get a data bag, we cache it in the node.run_state object, which
+    # expires at the end of the run. This can significantly speed up chef runs
+    # when you need access to the same whitelist multiple times.
+    #
     # Parameters:
     #   whitelist - the whitelist to check for the host
     #   data_bag  - the higher level data_bag containing the whitelist
